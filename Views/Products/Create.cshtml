@@ -1,0 +1,149 @@
+﻿@model ClientManagementSys.Models.Product
+@using ClientManagementSys.Areas.Identity.Data
+@inject SignInManager<ApplicationUser> _signInManager;
+@{
+    ViewData["Title"] = "Create";
+    Layout = "";
+}
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+    <link rel="stylesheet" href="/css/addproduct.css" asp-append-version="true">
+    <script src=""></script>
+    <title>Document</title>
+</head>
+<body>
+     <div class="container">
+        <div class="container">
+         <span> <partial name="_DashBoardPartial" /></span>
+        <div class="dashboard">
+            <div class="top-nav">
+                <p class="cms">Client Management System</p>
+               <span > <partial name="_LoginPartial" /></span>
+            </div>
+            <div class="main">
+                <div class="client">
+                    <div class="add-client">
+                        <p>Add New Product</p>
+                    </div>
+                </div>
+                <div class="containers">
+                    <div class="Contact" id="add-client">
+                        <form asp-action="Create">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="item">
+                                <label asp-for="Product_Name" class="control-label">Product Name</label>
+                                <input asp-for="Product_Name" class="form-control" />
+                                <span asp-validation-for="Product_Name" class="text-danger"></span>
+                            </div>
+                            <div class="item">
+                                <label asp-for="Product_Price" class="control-label">Product Price</label>
+                                <input asp-for="Product_Price" type="text" class="form-control" />
+                                <span asp-validation-for="Product_Price" class="text-danger"></span>
+                            </div>
+                            <div class="item">
+                                <label asp-for="Category" class="control-label">Category</label>
+                                <input asp-for="Category" class="form-control" />
+                                <span asp-validation-for="Category" class="text-danger"></span>
+                            </div>
+                            <div class="item">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" asp-for="Product_Status" />@Html.DisplayNameFor(model => model.Product_Status)
+                                </label>
+                            </div>
+                            <div class="item">
+                                <label asp-for="Product_CompleteDate" class="control-label">Product CompleteDate</label>
+                                <input asp-for="Product_CompleteDate" type="date" class="form-control" />
+                                <span asp-validation-for="Product_CompleteDate" class="text-danger"></span>
+                            </div>
+
+                            <div class="left">
+                            </div>
+                            <div>
+                                <input type="submit" value="Add" class="registerbtn"></input>
+                                <input type="submit" value="List" class="registerbtn" asp-action="Index"></input>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+             <div class="footer">
+        <h6>Client Management system 2022 by Silicon soft Nepal</h6>
+    </div>
+        </div>
+    </div>
+
+   
+
+
+    <script src="/js/navbar.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+@*<h1>Create</h1>
+
+    <h4>Product</h4>
+    <hr />
+    <div class="row">
+    <div class="col-md-4">
+    <form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+    <label asp-for="Product_Name" class="control-label"></label>
+    <input asp-for="Product_Name" class="form-control" />
+    <span asp-validation-for="Product_Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+    <label asp-for="Product_Price" class="control-label"></label>
+    <input asp-for="Product_Price" class="form-control" />
+    <span asp-validation-for="Product_Price" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+    <label asp-for="Category" class="control-label"></label>
+    <input asp-for="Category" class="form-control" />
+    <span asp-validation-for="Category" class="text-danger"></span>
+    </div>
+    <div class="form-group form-check">
+    <label class="form-check-label">
+    <input class="form-check-input" asp-for="Product_Status" /> @Html.DisplayNameFor(model => model.Product_Status)
+    </label>
+    </div>
+    <div class="form-group">
+    <label asp-for="Product_CompleteDate" class="control-label"></label>
+    <input asp-for="Product_CompleteDate" class="form-control" />
+    <span asp-validation-for="Product_CompleteDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+    <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+    </form>
+    </div>
+    </div>
+*@
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

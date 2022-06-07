@@ -1,0 +1,67 @@
+﻿@model IEnumerable<ClientManagementSys.Models.Progress_Report>
+@using ClientManagementSys.Areas.Identity.Data
+@inject SignInManager<ApplicationUser> _signInManager;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LastUpdated_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Completion_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Supervisor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Current_Milestone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total_Milestone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastUpdated_Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Completion_Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Supervisor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Current_Milestone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total_Milestone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Product_Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Report_Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Report_Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Report_Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

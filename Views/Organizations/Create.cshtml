@@ -1,0 +1,162 @@
+﻿@model ClientManagementSys.Models.Organization
+@using ClientManagementSys.Areas.Identity.Data
+@inject SignInManager<ApplicationUser> _signInManager;
+@{
+    ViewData["Title"] = "Create";
+    Layout = "";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+    <link rel="stylesheet" href="/css/add_client.css" asp-append-version="true">
+    <script src=""></script>
+    <title>Document</title>
+</head>
+<body>
+     
+    <div class="container">
+         <span> <partial name="_DashBoardPartial" /></span>
+        <div class="dashboard">
+            <div class="top-nav">
+                <p class="cms">Client Management System</p>
+            <span > <partial name="_LoginPartial" /></span>
+            </div>
+            <div class="main">
+                <div class="client">
+                    <div class="add-client">
+                        <p>Add New Organization</p>
+                    </div>
+                </div>
+                <div class="containers">
+                    <div class="Contact" id="add-client">
+                        <form asp-action="Create">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="item">
+                                <label asp-for="Org_Name" class="control-label">Organization Name</label>
+                                <input asp-for="Org_Name" class="form-control" />
+                                <span asp-validation-for="Org_Name" class="text-danger"></span>
+                            </div>
+                            <div class="item">
+                                <label asp-for="Org_Address" class="control-label">Organization Address</label>
+                                <input asp-for="Org_Address" class="form-control" />
+                                <span asp-validation-for="Org_Address" class="text-danger"></span>
+                            </div>
+                            <div>
+                                <label asp-for="Org_Contact" class="control-label">Organization Contact</label>
+                                <input asp-for="Org_Contact" type="number" class="form-control" />
+                                <span asp-validation-for="Org_Contact" class="text-danger"></span>
+                            </div>
+                            <div>
+                                <label asp-for="Org_Email" class="control-label">Organization Email </label>
+                                <input asp-for="Org_Email" class="form-control" />
+                                <span asp-validation-for="Org_Email" class="text-danger"></span>
+                            </div>
+                       
+
+
+                        
+                            <div>
+                                <input type="submit" value="Add" class="registerbtn"></input>
+                               <a asp-action="Index"> <input type="button" value="List" class="registerbtn"></input>    </a>                            
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer">
+                <h6>Client Management system 2022 by Silicon soft Nepal</h6>
+            </div>
+        </div>
+    </div>
+     <script src="/js/navbar.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*
+    <h1>Create</h1>
+
+    <h4>Organization</h4>
+    <hr />
+    <div class="row">
+    <div class="col-md-4">
+    <form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+    <label asp-for="Org_Name" class="control-label"></label>
+    <input asp-for="Org_Name" class="form-control" />
+    <span asp-validation-for="Org_Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+    <label asp-for="Org_Address" class="control-label"></label>
+    <input asp-for="Org_Address" class="form-control" />
+    <span asp-validation-for="Org_Address" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+    <label asp-for="Org_Contact" class="control-label"></label>
+    <input asp-for="Org_Contact" class="form-control" />
+    <span asp-validation-for="Org_Contact" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+    <label asp-for="Org_Email" class="control-label"></label>
+    <input asp-for="Org_Email" class="form-control" />
+    <span asp-validation-for="Org_Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+    <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+    </form>
+    </div>
+    </div>
+
+    <div>
+    <a asp-action="Index">Back to List</a>
+    </div>
+*@
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

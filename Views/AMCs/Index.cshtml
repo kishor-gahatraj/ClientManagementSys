@@ -1,0 +1,196 @@
+﻿@model IEnumerable<ClientManagementSys.Models.AMC>
+@using ClientManagementSys.Areas.Identity.Data
+@inject SignInManager<ApplicationUser> _signInManager;
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "";
+}
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+    <!--css link for style-->
+    <link rel="stylesheet" href="/css/amc.css" asp-append-version="true">
+    <title>Document</title>
+</head>
+<body>
+   
+         <div class="container">
+         <span> <partial name="_DashBoardPartial" /></span>
+        <div class="dashboard">
+            <div class="top-nav">
+                <p class="cms">Client Management System</p>
+                <span > <partial name="_LoginPartial" /></span>
+            </div>
+            <div class="clients-detail">
+                <div class="search">
+                    <h4>All AMC</h4>
+                    <div class="search-input">
+                        <input class="instant-search__input" type="text" spellcheck="false" placeholder="Search AMC">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                    <div class="add-client">
+                        <button type="button"><a asp-action="Create"><i class="fa fa-plus"></i> Add AMC </a></button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="items">
+                <table class="table-sortable">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                           @* <th>AMC Name</th>*@
+                            <th>Maintenance charge</th>
+                            <th>Maintenance Charge</th>
+                            <th>Product Name</th>
+                            <th>Organization Name</th>
+                            <th> Actions </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td> @Html.DisplayFor(modelItem=> item.AMC_Id)</td>
+                                @*<td>
+                                    @Html.DisplayFor(modelItem => item.AMC_Name)
+                                </td>*@
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Maintenance_Charge)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Maintenance_Date)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Product.Product_Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Organization.Org_Name)
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.AMC_Id">Edit</a>
+                                    @*  <a asp-action="Details" asp-route-id="@item.AMC_Id">Details</a> |
+                                        <a asp-action="Delete" asp-route-id="@item.AMC_Id">Delete</a>*@
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table> <!-- whole table div ended-->
+
+            </div> <!--items div ended-->
+
+    <div class="footer">
+        <p>Client Management System 2022 by Silicon Soft Nepal</p>
+    </div>
+        </div> <!--clients div ended-->
+    
+    </div> <!--container div ended-->
+    <!-- Pagination  elements started -->
+    <div class="pagination_section">
+        <a href="#"><<</a>
+        <a href="#" title="Algorithm">1</a>
+        <a href="#" title="DataStructure">2</a>
+        <a href="#" title="Languages">3</a>
+        <a href="#" title="Interview" class="active">4</a>
+        <a href="#" title="practice">5</a>
+        <a href="#"> >> </a>
+    </div>
+
+
+    
+
+
+    <script src="/js/navbar.js"></script>
+    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190….js"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<h1>Index</h1>
+
+    <p>
+    <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+    <thead>
+    <tr>
+    <th>
+    @Html.DisplayNameFor(model => model.AMC_Name)
+    </th>
+    <th>
+    @Html.DisplayNameFor(model => model.Maintenance_Charge)
+    </th>
+    <th>
+    @Html.DisplayNameFor(model => model.Maintenance_Date)
+    </th>
+    <th>
+    @Html.DisplayNameFor(model => model.Product)
+    </th>
+    <th>
+    @Html.DisplayNameFor(model => model.Organization)
+    </th>
+    <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+    <tr>
+    <td>
+    @Html.DisplayFor(modelItem => item.AMC_Name)
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.Maintenance_Charge)
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.Maintenance_Date)
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.Product.Product_Name)
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.Organization.Org_Name)
+    </td>
+    <td>
+    <a asp-action="Edit" asp-route-id="@item.AMC_Id">Edit</a> |
+    <a asp-action="Details" asp-route-id="@item.AMC_Id">Details</a> |
+    <a asp-action="Delete" asp-route-id="@item.AMC_Id">Delete</a>
+    </td>
+    </tr>
+    }
+    </tbody>
+    </table>
+*@

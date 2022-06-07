@@ -1,0 +1,286 @@
+﻿@using ClientManagementSys.Areas.Identity.Data
+@inject SignInManager<ApplicationUser> _signInManager;
+@model ClientManagementSys.Models.Counter_Table
+
+
+
+
+
+@{
+
+    Layout = "";
+}
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        data.addRows([
+          ['User', @Model.Total_User],
+          ['Product', @Model.Product_Quantity],
+          ['Organization', @Model.Total_Organization],
+       
+        ]);
+
+        // Set chart options
+        var options = {'title':'Counter Bar-chart',
+                       'width':400,
+                       'height':400,
+                                  };
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+  
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+    <link rel="stylesheet" href="/css/addproduct.css" asp-append-version="true">
+    <script src=""></script>
+    <title>Document</title>
+</head>
+<body>
+
+
+
+
+    <div class="container">
+        <span> <partial name="_DashBoardPartial" /></span>
+        <div class="dashboard" style="background-color:aliceblue">
+            <div class="top-nav">
+                <p class="cms">Client Management System</p>
+                <span > <partial name="_LoginPartial" /></span>
+
+
+            </div>
+           <div class="home-content">
+          <div class="overview-boxes">
+            <div class="box">
+              <div class="right-side">
+                <div class="number">@Model.Total_Organization</div>
+                <div class="box-topic">Total Organizations</div>
+              </div>
+              <i class='bx bx-cart-alt cart'></i>
+            </div>
+            <div class="box">
+              <div class="right-side">
+                <div class="number"> @Model.Total_User</div>
+                <div class="box-topic">Total Users</div>
+              </div>
+              <i class='bx bxs-cart-add cart two'></i>
+            </div>
+            <div class="box">
+              <div class="right-side">
+                <div class="number">@Model.Product_Quantity</div>
+                <div class="box-topic">Total Products</div>
+              </div>
+              <i class='bx bx-cart cart three'></i>
+            </div>
+          </div>
+          <div class="project">
+            <div class="overall-project">
+                <div id="chart_div"></div>
+             
+             
+            </div>
+            <div class="recent-project">
+              <div class="heading-proj">
+                <h3>Recent Work</h3>
+              </div>
+              <ol>
+                <li>Client Management System</li>
+                <br>
+                <li>Hotel Booking System</li>
+                <br>
+                <li>Rental System</li>
+                <br>
+                <li>Library Management System</li>
+                <br>
+              </ol>
+            </div>
+          </div>
+
+
+                            
+            <!--Div that will hold the pie chart-->
+    
+
+
+
+                            <div class="footer">
+                                <h6>Client Management system 2022 by Silicon soft Nepal</h6>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+
+                <script src="/js/navbar.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<div class="container">
+    <div class="nav-bar">
+    <div class="top">
+    <h4>Client Management System</h4>
+    </div>
+    <div class="admin-icon">
+    <i class='fas fa-user-circle' style='font-size:90px'></i>
+    <h3>Admin</h3>
+    </div>
+    <div class="nav">
+    <ul class="side-menu">
+    <li class="nav-item">
+    <a href="#">
+    <i class="fa fa-table icon"></i>
+    <span>Dashboard</span>
+    </li>
+    <li class="nav-item">
+    <a href="#">
+    <i class="fas fa-users icon"></i>
+    <span>Client</span>
+    <i class="bx bxs-chevron-right"></i>
+    </a>
+    <ul class="sub-menu">
+    <li>
+    @Html.ActionLink("Add Client", "Create", "Organizations")
+    </li>
+    <li>
+    @Html.ActionLink("Client list", "Index", "Organizations")
+    </li>
+    <li>
+    <a href="#">Client Representative</a>
+    </li>
+    </ul>
+    </li>
+    <li class="nav-item">
+    <a href="#">
+    <i class="fa fa-shopping-cart icon"></i>
+    <span>Product</span>
+    <i class="bx bxs-chevron-right"></i>
+    </a>
+    <ul class="sub-menu">
+    <li>
+    @Html.ActionLink("Add Product", "Create", "Products")
+    </li>
+    <li>
+    @Html.ActionLink("Product List", "Index", "Products")
+    </li>
+    </ul>
+    </li>
+    <li class="nav-item ">
+    <a href="#">
+    <i class="fas fa-file-invoice-dollar icon"></i>
+    <span>Invoice</span>
+    </a>
+    <ul class="sub-menu">
+    <li>
+    @Html.ActionLink("Add Invoices", "Create", "Invoices")
+    </li>
+    <li>
+    @Html.ActionLink("Invoice List", "Index", "Invoices")
+    </li>
+    </ul>
+    </li>
+    <li class="nav-item ">
+    <a href="#">
+    <i class="fa fa-file-code-o icon "></i>
+    <span>Report</span>
+    </a>
+    <ul class="sub-menu">
+    <li>
+    @Html.ActionLink("Add Report", "Create", "Progress_Report")
+    </li>
+    <li>
+    @Html.ActionLink("Report List", "Index", "Progress_Report")
+    </li>
+    </ul>
+    </li>
+    <li class="nav-item">
+    <a href="#">
+    <i class="fa fa-dollar icon"></i>
+    <span>Expense</span>
+    </a>
+    <ul class="sub-menu">
+    <li>
+    @Html.ActionLink("Add Expense", "Create", "Expenses")
+    </li>
+    <li>
+    @Html.ActionLink("Expense List", "Index", "Expenses")
+    </li>
+    </ul>
+    </li>
+    <li class="nav-item ">
+    <a href="#">
+    <i class="fa fa-calendar icon"></i>
+    <span>AMC</span>
+    </a>
+    <ul class="sub-menu">
+    <li>
+    @Html.ActionLink("Add AMC", "Create", "AMCs")
+    </li>
+    <li>
+    @Html.ActionLink("Add AMC", "Index", "AMCs")
+
+    </li>
+    </ul>
+    </div>
+    </div>
+
+
+*@

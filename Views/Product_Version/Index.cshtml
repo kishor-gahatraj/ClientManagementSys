@@ -1,0 +1,319 @@
+﻿@model IEnumerable<ClientManagementSys.Models.Product_Version>
+@using ClientManagementSys.Areas.Identity.Data
+@inject SignInManager<ApplicationUser> _signInManager;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "";
+}
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+    <link rel="stylesheet" href="/css/productlist.css" asp-append-version="true"/>
+    <script src=""></script>
+    <title>Document</title>
+</head>
+<body>
+    
+      <div class="container">
+        <div class="nav-bar">
+            <div class="top">
+                <h4>Client Management System</h4>
+            </div>
+            <div class="admin-icon">
+                <i class='fas fa-user-circle' style='font-size:90px'></i>
+                <h3>Admin</h3>
+            </div>
+            <div class="nav">
+                <ul class="side-menu">
+                    <li class="nav-item">
+                        <a asp-action="index" asp-controller="DashBoard">
+                            <i class="fa fa-table icon"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">
+                            <i class="fas fa-users icon"></i>
+                            <span>Organization</span>
+                            <i class="bx bxs-chevron-right"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                @Html.ActionLink("Add Organization", "Create", "Organizations")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Organization List", "Index", "Organizations")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Create Representatives", "Create", "Org_Representative")
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">
+                            <i class="fa fa-shopping-cart icon"></i>
+                            <span>Product</span>
+                            <i class="bx bxs-chevron-right"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                @Html.ActionLink("Add Product", "Create", "Products")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Product List", "Index", "Products")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Update Product", "Create", "Product_Version")
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="#">
+                            <i class="fas fa-file-invoice-dollar icon"></i>
+                            <span>Invoice</span>
+                            <i class="bx bxs-chevron-right"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                @Html.ActionLink("Add Invoices", "Create", "Invoices")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Invoice List", "Index", "Invoices")
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="#">
+                            <i class="fa fa-file-code-o icon "></i>
+                            <span>Report</span>
+                            <i class="bx bxs-chevron-right"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                @Html.ActionLink("Add Report", "Create", "Progress_Report")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Report List", "Index", "Progress_Report")
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">
+                            <i class="fa fa-dollar icon"></i>
+                            <span>Expense</span>
+                            <i class="bx bxs-chevron-right"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                @Html.ActionLink("Add Expense", "Create", "Expenses")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Expense List", "Index", "Expenses")
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="#">
+                            <i class="fa fa-calendar icon"></i>
+                            <span>AMC</span>
+                            <i class="bx bxs-chevron-right"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                @Html.ActionLink("Add AMC", "Create", "AMCs")
+                            </li>
+                            <li>
+                                @Html.ActionLink("AMC List", "Index", "AMCs")
+
+                            </li>
+                        </ul>
+                   @if (_signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                        {
+                        <li class="nav-item">
+                            <a asp-action="ListRoles" asp-controller="Administration">
+                                <i class="fa fa-th-list" aria-hidden="true"></i>
+
+                                <span>Manage Role</span>
+                            </a>
+                            <i class="bx bxs-chevron-right"></i>
+                        </li>
+                        }
+            </div>
+        </div>
+        <div class="dashboard">
+            <div class="top-nav">
+                <p class="cms">Client Management System</p>
+                <span > <partial name="_LoginPartial" /></span>
+            </div>
+            <div class="client">
+
+
+                <div class="search-client">
+                    <label style="font-size: 16px; font-weight: 550;">All Products</label>
+                    <input type="text" value="search product">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                    <a asp-action ="Create"> <i style="font-size:13px" class="fa">&#xf067;</i> Add Products</a>
+                </div>
+            </div>
+
+            <div class="client-table">
+                <div style="overflow-x:auto;" class="table-main">
+                    <table class="table-sort">
+                        <tr>
+                            <th>ID</th>
+                            <th>Version</th>
+                            <th>Modified Date</th>
+                            <th>Created Date</th>
+                            <th>Product Name</th>
+                            
+                        
+                            <th>Actions</th>
+
+
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr class="client-list">
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Product_VersionId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Version)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Modified_Date)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Created_Date)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Product.Product_Name)
+                                </td>
+                               @* <td>
+                                    @if (@item.Product_Status)
+                                    {
+                                        <button class="actives">Active</button>
+                                    }
+                                    else
+                                    {
+                                        <button class="inactives">Inactive</button>
+                                    }
+                                </td>*@
+                                <td class="actions">
+                                    <button> <a style="text-decoration:none" asp-action="Edit" asp-route-id="@item.Product_VersionId">Update</a></button> 
+                                    <button> <a style="text-decoration:none" asp-action="Details" asp-route-id="@item.Product_VersionId">Views</a> </button>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+
+            <div class="pagination">
+                <a href="#">&laquo;</a>
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+                <a href="#">6</a>
+                <a href="#">&raquo;</a>
+
+            </div>
+
+
+            <div class="footer">
+                <h6>Client Management system @*@2022*@ by Silicon soft Nepal</h6>
+            </div>
+
+        </div>
+    </div>
+       <script src="/js/navbar.js"></script>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Created_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Version)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Modified_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Created_Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Version)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Modified_Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Product_Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Product_VersionId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Product_VersionId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Product_VersionId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+*@

@@ -1,0 +1,167 @@
+﻿@model ClientManagementSys.Models.Org_Representative
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+      <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+      <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+      <link rel="stylesheet" href="/css/representative.css" asp-append-version="true">
+      <script src=""></script>
+      <title>Document</title>
+   </head>
+   <body>
+         
+       <div class="container">
+         <span> <partial name="_DashBoardPartial" /></span>
+        <div class="dashboard">
+            <div class="top-nav">
+                <p class="cms">Client Management System</p>
+               <span > <partial name="_LoginPartial" /></span>
+            </div>
+        @* <div class="dashboard">
+            <div class="top-nav">
+               <p class="cms">Client Management System</p>
+               <a href="#">Logout</a>
+            </div>*@
+            <div class="main">
+               <div class="client">
+                  <div class="add-client">
+                     <p>View Reperesentative</p>
+                  </div>
+               </div>
+               <div class="containers">
+                  <div class="Contact" id="add-client">
+                     <div class="top-detail">
+                        <h4>Representative:@Model.Representative_Id</h4>
+                        <img src="/images/representative.png" style="width: 10%; height: 10%;">
+                     </div>
+                     <div class="view-main">
+                        <div class="view">
+                           <h6 class="title">Name</h6>
+                           <p>@Model.Representative_FullName</p>
+                        </div>
+                        <div class="view">
+                           <P class="title">Contact </P>
+                           <p>@Model.ContactNo</p>
+                        </div>
+                        <div class="view">
+                           <P class="title">Email </P>
+                           <p>@Model.Representative_Email</p>
+                        </div>
+                        <div class="view">
+                           <P class="title">Address </P>
+                           <p>@Model.Representative_Address</p>
+                        </div>
+                        <div class="view">
+                           <P class="title ">Status </P>
+                           <p class="green status" >@Model.Representative_Status</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="bottom-detail">
+                  <button class="edit"> <a asp-action="Edit" asp-route-id="@Model?.Representative_Id">Edit</a></button>
+                  <button class="back"><a asp-action="Index">Back to List</a></button>                       
+               </div>
+            </div>
+      
+            <div class="footer">
+               <h6>Client Management system 2022 by Silicon soft Nepal</h6>
+            </div>
+         </div>
+      </div>
+      <script src="~/js/representative.js"></script>
+   </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<div>
+    <h4>Org_Representative</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ContactNo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ContactNo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Representative_Status)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Representative_Status)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Representative_Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Representative_Email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Representative_FullName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Representative_FullName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Representative_Address)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Representative_Address)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Organization)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Organization.Org_Name)
+        </dd>
+    </dl>
+</div>
+<div>   |
+    
+</div>
+*@ 

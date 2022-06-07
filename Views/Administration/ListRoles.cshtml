@@ -1,0 +1,43 @@
+﻿@model IEnumerable<IdentityRole>
+
+
+@{
+    ViewData["Title"] = "List Of Roles";
+  
+}
+<h1>List</h1>
+
+@if (Model.Any())
+{
+    foreach (var role in Model)
+    {
+        <div class="card mb-3">
+            <div class="card-header">
+                Role Id :@role.Id
+
+            </div>
+            <div class="card-body">
+                <h5>@role.Name </h5>
+            </div>
+            <div class='card-footer'>
+                <a class="btn btn-primary" asp-action="EditRole" asp-controller="Administration" asp-route-id="@role.Id">Add User </a>
+               
+            </div>
+
+
+        </div>
+    }
+}
+
+
+@*<a class="btn btn-primary " style="width:auto" asp-controller="Administration" asp-action="CreateRole">
+    Add New Role
+</a>*@
+
+
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,172 @@
+﻿@model ClientManagementSys.Models.Org_Representative
+@using ClientManagementSys.Areas.Identity.Data
+@inject SignInManager<ApplicationUser> _signInManager;
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "";
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+    <link rel="stylesheet" href="/css/addproduct.css" asp-append-version="true">
+    <script src=""></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+         <span> <partial name="_DashBoardPartial" /></span>
+        <div class="dashboard">
+            <div class="top-nav">
+                <p class="cms">Client Management System</p>
+                <span > <partial name="_LoginPartial" /></span>
+            </div>
+                <div class="containers">
+                    <div class="Contact" id="add-client">
+                        <form asp-action="Edit">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="Representative_Id" />
+                            <div class="item">
+                                <label asp-for="Representative_FullName" class="control-label"></label>
+                                <input asp-for="Representative_FullName" class="form-control" />
+                                <span asp-validation-for="Representative_FullName" class="text-danger"></span>
+                            </div>
+
+                            <div class="item">
+                                <label asp-for="Representative_Email" class="control-label"></label>
+                                <input asp-for="Representative_Email" class="form-control" />
+                                <span asp-validation-for="Representative_Email" class="text-danger"></span>
+                            </div>
+                            <div class="item">
+                                <label asp-for="ContactNo" class="control-label"></label>
+                                <input asp-for="ContactNo" type="number" class="form-control" />
+                                <span asp-validation-for="ContactNo" class="text-danger"></span>
+                            </div>
+                            <div class="item">
+                                <label asp-for="Org_Id" class="control-label"></label>
+                                <select asp-for="Org_Id" class="form-control" asp-items="ViewBag.Org_Id"></select>
+
+                            </div>
+                            <div class="item">
+                                <label asp-for="Representative_Address" class="control-label"></label>
+                                <input asp-for="Representative_Address" class="form-control" />
+                                <span asp-validation-for="Representative_Address" class="text-danger"></span>
+                            </div>
+                            <div class="item">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" asp-for="Representative_Status" /> @Html.DisplayNameFor(model => model.Representative_Status)
+                                </label>
+                            </div>
+                            <div>
+                            </div>
+                            <div>
+                                <br>
+                                <input type="submit" value="Add" class="registerbtn"></input>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                  <div class="footer">
+                <h6>Client Management system 2022 by Silicon soft Nepal</h6>
+            </div>
+            </div>
+
+          
+        </div>
+  
+
+
+
+    <script src="/js/navbar.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<h1>Edit</h1>
+
+    <h4>Org_Representative</h4>
+    <hr />
+    <div class="row">
+    <div class="col-md-4">
+    <form asp-action="Edit">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Representative_Id" />
+    <div class="form-group">
+    <label asp-for="ContactNo" class="control-label"></label>
+    <input asp-for="ContactNo" class="form-control" />
+    <span asp-validation-for="ContactNo" class="text-danger"></span>
+    </div>
+    <div class="form-group form-check">
+    <label class="form-check-label">
+    <input class="form-check-input" asp-for="Representative_Status" /> @Html.DisplayNameFor(model => model.Representative_Status)
+    </label>
+    </div>
+    <div class="form-group">
+    <label asp-for="Representative_Email" class="control-label"></label>
+    <input asp-for="Representative_Email" class="form-control" />
+    <span asp-validation-for="Representative_Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+    <label asp-for="Representative_FullName" class="control-label"></label>
+    <input asp-for="Representative_FullName" class="form-control" />
+    <span asp-validation-for="Representative_FullName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+    <label asp-for="Representative_Address" class="control-label"></label>
+    <input asp-for="Representative_Address" class="form-control" />
+    <span asp-validation-for="Representative_Address" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+    <label asp-for="Org_Id" class="control-label"></label>
+    <select asp-for="Org_Id" class="form-control" asp-items="ViewBag.Org_Id"></select>
+    <span asp-validation-for="Org_Id" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+    <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+    </form>
+    </div>
+    </div>
+
+    <div>
+    <a asp-action="Index">Back to List</a>
+    </div>
+*@
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}
