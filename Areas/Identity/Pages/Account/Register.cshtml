@@ -1,0 +1,85 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = "";
+}
+@*
+<h1>@ViewData["Title"]</h1>
+*@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Client Management System</title>
+<link rel = "stylesheet" href = "~/css/register.css" asp-append-version = "true">
+</head>
+<body>
+    <div class="main">
+
+                <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <div class="container">
+                    <h2>Client Management System</h2>
+                    <p>Please fill in this form to create an account.</p>
+                    <hr>
+                    <div class="fl">
+                        <div class="box">
+                            <label asp-for="Input.FirstName" class="labelname"><b>First Name</b></label>
+                            <input asp-for="Input.FirstName" autocomplete="firstname" aria-required="true" type="text" placeholder="Enter firstname" >
+                            <span asp-validation-for="Input.FirstName" class="error" id="errorfname"> </span>
+                        </div>  
+
+                        <div class="box boxlname">
+                            <label asp-for="Input.LastName"><b>Last Name</b></label>
+                            <input asp-for="Input.LastName" autocomplete="lastname" aria-required="true" type="text" placeholder="Enter lastname"  >
+                            <span asp-validation-for="Input.LastName" class="error" id="errorlname"> </span>
+                         </div>
+                     </div>
+
+                     <div>
+                    <label asp-for="Input.UserName"><b>Username</b></label>
+                    <input asp-for="Input.UserName" autocomplete="username" aria-required="true" type="text" placeholder="Enter username" >
+                    <span asp-validation-for="Input.UserName" class="error" id="erroruname"> </span>
+                    </div>
+
+                    <div>
+                    <label asp-for="Input.Email"><b>Email </b></label>
+                    <input asp-for="Input.Email" autocomplete="email" aria-required="true" type="text" placeholder="Enter Email" >
+                    <span asp-validation-for="Input.Email" class="error" id="erroremail"> </span>
+                     </div>
+
+                     <div>
+                        <label asp-for="Input.Address"><b>Address</b></label>
+                        <input asp-for="Input.Address" autocomplete="address" aria-required="true" type="text" placeholder="Enter address" >
+                        <span asp-validation-for="Input.Address" class="error" id="erroraddresss"> </span>
+                        </div>
+
+                     <div>
+                    <label asp-for="Input.Password"><b>Password</b></label>
+                    <input asp-for="Input.Password" autocomplete="password" aria-required="true" type="password" placeholder="Enter Password" >
+                    <span asp-validation-for="Input.Password" class="error" id="errorpw"> </span>
+                    </div>
+
+                    <div>
+                    <label asp-for="Input.ConfirmPassword"><b>Confirm Password</b></label>
+                    <input asp-for="Input.ConfirmPassword" autocomplete="password" aria-required="true" type="password" placeholder="Confirm Password" >
+                    <span asp-validation-for="Input.ConfirmPassword" class="error" id="errorconfirm"> </span>
+                    </div>
+                  
+
+                    <div class="btn">
+                    <button id="registerSubmit" type="submit" class="registerbtn">Register</button>
+                     </div>
+                </div>
+                
+                
+                </form>
+        </div>
+
+@*<script src="register.js"></script>*@
+</body>
+</html>
+
+@section Scripts {
+    <partial name = "_ValidationScriptsPartial" />
+}

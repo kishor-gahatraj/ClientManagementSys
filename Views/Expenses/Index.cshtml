@@ -1,0 +1,328 @@
+﻿@model IEnumerable<ClientManagementSys.Models.Expenses>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "";
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+    <!--css link for style-->
+    <link rel="stylesheet" href="/css/amc.css" asp-append-version="true">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-bar">
+            <div class="top">
+                <h4>Client Management System</h4>
+            </div>
+            <div class="admin-icon">
+                <i class='fas fa-user-circle' style='font-size:90px'></i>
+                <h3>Admin</h3>
+            </div>
+            <div class="nav">
+                <ul class="side-menu">
+                    <li class="nav-item">
+                        <a asp-action="index" asp-controller="DashBoard">
+                            <i class="fa fa-table icon"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">
+                            <i class="fas fa-users icon"></i>
+                            <span>Organization</span>
+                            <i class="bx bxs-chevron-right"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                @Html.ActionLink("Add Organization", "Create", "Organizations")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Organization List", "Index", "Organizations")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Create Representatives", "Create", "Org_Representative")
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">
+                            <i class="fa fa-shopping-cart icon"></i>
+                            <span>Product</span>
+                            <i class="bx bxs-chevron-right"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                @Html.ActionLink("Add Product", "Create", "Products")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Product List", "Index", "Products")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Update Product", "Create", "Product_Version")
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="#">
+                            <i class="fas fa-file-invoice-dollar icon"></i>
+                            <span>Invoice</span>
+                            <i class="bx bxs-chevron-right"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                @Html.ActionLink("Add Invoices", "Create", "Invoices")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Invoice List", "Index", "Invoices")
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="#">
+                            <i class="fa fa-file-code-o icon "></i>
+                            <span>Report</span>
+                            <i class="bx bxs-chevron-right"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                @Html.ActionLink("Add Report", "Create", "Progress_Report")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Report List", "Index", "Progress_Report")
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">
+                            <i class="fa fa-dollar icon"></i>
+                            <span>Expense</span>
+                            <i class="bx bxs-chevron-right"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                @Html.ActionLink("Add Expense", "Create", "Expenses")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Expense List", "Index", "Expenses")
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="#">
+                            <i class="fa fa-calendar icon"></i>
+                            <span>AMC</span>
+                            <i class="bx bxs-chevron-right"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                @Html.ActionLink("Add AMC", "Create", "AMCs")
+                            </li>
+                            <li>
+                                @Html.ActionLink("AMC List", "Index", "AMCs")
+
+                            </li>
+                        </ul>
+
+            </div>
+        </div>
+
+        <!-- sidebar nav section ended -->
+        <!-- Clients detail right started -->
+        <div class="clients">
+            <div class="top-nav">
+                @* <div class="link">*@
+                <h4> Client Management System</h4>
+                <a href="#">Logout</a>
+                @* </div>*@
+            </div>
+            <div class="clients-detail">
+                <div class="search">
+                    <h4>All AMC</h4>
+                    <div class="search-input">
+                        <input class="instant-search__input" type="text" spellcheck="false" placeholder="Search Expense">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                    <div class="add-client">
+                        <button type="button"><a asp-action="Create" style="text-decoration:none"><i class="fa fa-plus"></i> Add Expense </a></button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="items">
+                <table class="table-sortable">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Expenses Name</th>
+                            <th>Expenditure Price</th>
+                            <th>Total Price</th>
+                            <th>Organization</th>
+                            <th>Product</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Expenses_Id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Expenditure_Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Expenditure_Price)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Total_Price)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Organization.Org_Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Product.Product_Name)
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.Expenses_Id">Edit</a> |
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table> <!-- whole table div ended-->
+
+            </div> <!--items div ended-->
+
+            <div class="footer">
+                <p>Client Management System 2022 by Silicon Soft Nepal</p>
+            </div>
+        </div> <!--clients div ended-->
+
+    </div> <!--container div ended-->
+    <!-- Pagination  elements started -->
+    <div class="pagination_section">
+        <a href="#"><<</a>
+        <a href="#" title="Algorithm">1</a>
+        <a href="#" title="DataStructure">2</a>
+        <a href="#" title="Languages">3</a>
+        <a href="#" title="Interview" class="active">4</a>
+        <a href="#" title="practice">5</a>
+        <a href="#"> >> </a>
+    </div>
+
+
+
+
+
+    <script src="/js/navbar.js"></script>
+    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190….js"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<h1>Index</h1>
+
+
+
+
+    <p>
+    <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+    <thead>
+    <tr>
+    <th>
+    @Html.DisplayNameFor(model => model.Expenditure_Name)
+    </th>
+    <th>
+    @Html.DisplayNameFor(model => model.Expenditure_Price)
+    </th>
+    <th>
+    @Html.DisplayNameFor(model => model.Total_Price)
+    </th>
+    <th>
+    @Html.DisplayNameFor(model => model.Organization)
+    </th>
+    <th>
+    @Html.DisplayNameFor(model => model.Product)
+    </th>
+    <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+    <tr>
+    <td>
+    @Html.DisplayFor(modelItem => item.Expenditure_Name)
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.Expenditure_Price)
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.Total_Price)
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.Organization.Org_Id)
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.Product.Product_Id)
+    </td>
+    <td>
+    <a asp-action="Edit" asp-route-id="@item.Expenses_Id">Edit</a> |
+    <a asp-action="Details" asp-route-id="@item.Expenses_Id">Details</a> |
+    <a asp-action="Delete" asp-route-id="@item.Expenses_Id">Delete</a>
+    </td>
+    </tr>
+    }
+    </tbody>
+    </table>
+*@

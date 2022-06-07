@@ -1,0 +1,126 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+   
+  }
+  
+  * {
+    box-sizing: border-box;
+    
+  }
+  .main{
+      margin: auto;
+      width: 50%;
+  
+      padding: 10px;
+      
+  }
+  
+  div{
+      margin: 15px 0 0 0;
+  }
+  
+  .container {
+      margin-top: 2rem;
+       padding: 16px;
+       margin-left:1rem;
+      
+    
+       box-shadow: 0 0 2px 0 ;
+      background-color: #F1F1FB;
+    
+     
+  }
+  .fl{
+      display: flex;
+    
+    
+  }
+  .labelname{
+      width: 100%;
+  }
+  .box{
+      width: 48%;
+      display: inline-block;
+  }
+  
+  .boxlname{
+      margin-left: 0.6rem; 
+      width: 48%;
+  }
+  
+  
+  
+  
+  input[type=text], input[type=password] {
+    width: 95%;
+    padding: 10px;
+    margin: 5px 0 7px 0;
+    display: inline-block;
+    border: none;
+     background-color: #ffffff; 
+  }
+  
+  input[type=text]:focus, input[type=password]:focus {
+    background-color: #F8F9F9;
+    outline: none;
+  }
+  
+  
+  hr {
+    
+    margin-bottom: 10px;
+  }
+  
+  .btn{
+      margin: auto;
+      width: 50%;
+  
+      padding: 10px;
+  }
+  .registerbtn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+  
+  .registerbtn:hover {
+    opacity: 1;
+  }
+  .error{
+      color: red;
+      font-size: 14px;
+      margin-left: 1rem;
+      margin-top: -50px;
+      
+    }
+  
+  
+ 
+  @media only screen and  (max-width: 800px) {
+      .main{
+      margin: auto;
+      width: 90%;
+  
+      padding: 10px;
+  }
+  .fl{
+      display: flex;
+      flex-direction: column;
+  }
+  .box{
+      width: 100%;
+      display: inline-block;
+  }
+  
+  .boxlname{
+      margin-left: 0rem; 
+      width: 100%;
+  }
+  
+  }
+  

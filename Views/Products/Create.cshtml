@@ -1,0 +1,261 @@
+﻿@model ClientManagementSys.Models.Product
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "";
+}
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+    <link rel="stylesheet" href="/css/addproduct.css" asp-append-version="true">
+    <script src=""></script>
+    <title>Document</title>
+</head>
+<body>
+     <div class="container">
+        <div class="nav-bar">
+            <div class="top">
+                <h4>Client Management System</h4>
+            </div>
+            <div class="admin-icon">
+                <i class='fas fa-user-circle' style='font-size:90px'></i>
+                <h3>Admin</h3>
+            </div>
+            <div class="nav">
+                <ul class="side-menu">
+                    <li class="nav-item">
+                        <a asp-action="index" asp-controller="DashBoard">
+                            <i class="fa fa-table icon"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                   <li class="nav-item">
+                        <a href="#">
+                            <i class="fas fa-users icon"></i>
+                            <span>Organization</span>
+                            <i class="bx bxs-chevron-right"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                @Html.ActionLink("Add Organization", "Create", "Organizations")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Organization List", "Index", "Organizations")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Create Representatives", "Create", "Org_Representative")
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">
+                            <i class="fa fa-shopping-cart icon"></i>
+                            <span>Product</span>
+                            <i class="bx bxs-chevron-right"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                @Html.ActionLink("Add Product", "Create", "Products")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Product List", "Index", "Products")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Update Product", "Create", "Product_Version")
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="#">
+                            <i class="fas fa-file-invoice-dollar icon"></i>
+                            <span>Invoice</span>
+                            <i class="bx bxs-chevron-right"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                @Html.ActionLink("Add Invoices", "Create", "Invoices")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Invoice List", "Index", "Invoices")
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="#">
+                            <i class="fa fa-file-code-o icon "></i>
+                            <span>Report</span>
+                            <i class="bx bxs-chevron-right"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                @Html.ActionLink("Add Report", "Create", "Progress_Report")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Report List", "Index", "Progress_Report")
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">
+                            <i class="fa fa-dollar icon"></i>
+                            <span>Expense</span>
+                            <i class="bx bxs-chevron-right"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                @Html.ActionLink("Add Expense", "Create", "Expenses")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Expense List", "Index", "Expenses")
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="#">
+                            <i class="fa fa-calendar icon"></i>
+                            <span>AMC</span>
+                            <i class="bx bxs-chevron-right"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                @Html.ActionLink("Add AMC", "Create", "AMCs")
+                            </li>
+                            <li>
+                                @Html.ActionLink("AMC List", "Index", "AMCs")
+
+                            </li>
+                        </ul>
+                 
+            </div>
+        </div>
+        <div class="dashboard">
+            <div class="top-nav">
+                <p class="cms">Client Management System</p>
+                <a href="#">Logout</a>
+            </div>
+            <div class="main">
+                <div class="client">
+                    <div class="add-client">
+                        <p>Add New Product</p>
+                    </div>
+                </div>
+                <div class="containers">
+                    <div class="Contact" id="add-client">
+                        <form asp-action="Create">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="item">
+                                <label asp-for="Product_Name" class="control-label">Product Name</label>
+                                <input asp-for="Product_Name" class="form-control" />
+                                <span asp-validation-for="Product_Name" class="text-danger"></span>
+                            </div>
+                            <div class="item">
+                                <label asp-for="Product_Price" class="control-label">Product Price</label>
+                                <input asp-for="Product_Price" type="text" class="form-control" />
+                                <span asp-validation-for="Product_Price" class="text-danger"></span>
+                            </div>
+                            <div class="item">
+                                <label asp-for="Category" class="control-label">Category</label>
+                                <input asp-for="Category" class="form-control" />
+                                <span asp-validation-for="Category" class="text-danger"></span>
+                            </div>
+                            <div class="item">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" asp-for="Product_Status" />@Html.DisplayNameFor(model => model.Product_Status)
+                                </label>
+                            </div>
+                            <div class="item">
+                                <label asp-for="Product_CompleteDate" class="control-label">Product CompleteDate</label>
+                                <input asp-for="Product_CompleteDate" type="date" class="form-control" />
+                                <span asp-validation-for="Product_CompleteDate" class="text-danger"></span>
+                            </div>
+
+                            <div class="left">
+                            </div>
+                            <div>
+                                <input type="submit" value="Add" class="registerbtn"></input>
+                                <input type="submit" value="List" class="registerbtn" asp-action="Index"></input>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+             <div class="footer">
+        <h6>Client Management system 2022 by Silicon soft Nepal</h6>
+    </div>
+        </div>
+    </div>
+
+   
+
+
+    <script src="/js/navbar.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+@*<h1>Create</h1>
+
+    <h4>Product</h4>
+    <hr />
+    <div class="row">
+    <div class="col-md-4">
+    <form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+    <label asp-for="Product_Name" class="control-label"></label>
+    <input asp-for="Product_Name" class="form-control" />
+    <span asp-validation-for="Product_Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+    <label asp-for="Product_Price" class="control-label"></label>
+    <input asp-for="Product_Price" class="form-control" />
+    <span asp-validation-for="Product_Price" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+    <label asp-for="Category" class="control-label"></label>
+    <input asp-for="Category" class="form-control" />
+    <span asp-validation-for="Category" class="text-danger"></span>
+    </div>
+    <div class="form-group form-check">
+    <label class="form-check-label">
+    <input class="form-check-input" asp-for="Product_Status" /> @Html.DisplayNameFor(model => model.Product_Status)
+    </label>
+    </div>
+    <div class="form-group">
+    <label asp-for="Product_CompleteDate" class="control-label"></label>
+    <input asp-for="Product_CompleteDate" class="form-control" />
+    <span asp-validation-for="Product_CompleteDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+    <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+    </form>
+    </div>
+    </div>
+*@
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}
